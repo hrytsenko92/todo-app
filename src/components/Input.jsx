@@ -6,7 +6,7 @@ import { v4 } from "uuid";
 function Input() {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
-  const [priority, setPriority] = useState("Low");
+  const [priority, setPriority] = useState("1");
 
   const addTodoHandler = () => {
     const todo = {
@@ -16,7 +16,7 @@ function Input() {
       priority: priority,
       date: Date.now(),
     };
-    dispatch(addTodo(todo))
+    text.lenght > 3 ? dispatch(addTodo(todo)): console.log("min lenght")
     setText("")
   };
   const addPriority = (e) => {
@@ -27,29 +27,29 @@ function Input() {
     <>
       <div>
         <form onSubmit={(e) => e.preventDefault()}>
-          <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
+          <input type="text" required={true} placeholder="Add todo" minLength={3} maxLength={12} value={text} onChange={(e) => setText(e.target.value)} />
           <div>
             <span>Priority</span>
             <input
               type="radio"
               name="priority"
               onChange={addPriority}
-              checked={priority === "Low"}
-              value="Low"
+              checked={priority === "1"}
+              value="1"
             />
             <input
               type="radio"
               name="priority"
               onChange={addPriority}
-              checked={priority === "Med"}
-              value="Med"
+              checked={priority === "2"}
+              value="2"
             />
             <input
               type="radio"
               name="priority"
               onChange={addPriority}
-              checked={priority === "High"}
-              value="High"
+              checked={priority === "3"}
+              value="3"
             />
           </div>
           <button onClick={()=> addTodoHandler()}>Click</button>
