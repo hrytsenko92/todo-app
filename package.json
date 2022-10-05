@@ -13,13 +13,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "dev-server": "webpack-dev-server --mode development --open",
-    "dev": "webpack --mode development --watch",
-    "prod": "webpack --mode production"
+    "start": "webpack-dev-server --env development --open",
+    "build": "webpack --env production"
   },
   "eslintConfig": {
     "extends": [
@@ -52,6 +47,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^11.0.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "csv-loader": "^3.0.5",
     "file-loader": "^6.2.0",
@@ -63,6 +59,7 @@
     "papaparse": "^5.3.2",
     "react-redux": "^8.0.4",
     "sass-loader": "^13.0.2",
+    "style-loader": "^3.3.1",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.1",

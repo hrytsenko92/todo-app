@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../store/todoSlice";
 import { v4 } from "uuid";
+import styles from "../style/input.module.scss";
 
 function Input() {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ function Input() {
       priority: priority,
       date: Date.now(),
     };
-    text.lenght > 3 ? dispatch(addTodo(todo)): console.log("min lenght")
+    if (todo.title.length > 2 && todo.title.length < 20) {dispatch(addTodo(todo))}
     setText("")
   };
   const addPriority = (e) => {
@@ -24,38 +25,36 @@ function Input() {
   };
 
   return (
-    <>
-      <div>
+      <div className={styles.inputWrapper}>
         <form onSubmit={(e) => e.preventDefault()}>
-          <input type="text" required={true} placeholder="Add todo" minLength={3} maxLength={12} value={text} onChange={(e) => setText(e.target.value)} />
+          <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
           <div>
-            <span>Priority</span>
-            <input
+            <span>Priority: </span>
+            <span>Low<input
               type="radio"
               name="priority"
               onChange={addPriority}
               checked={priority === "1"}
               value="1"
-            />
-            <input
+            /></span>
+           <span>Med<input
               type="radio"
               name="priority"
               onChange={addPriority}
               checked={priority === "2"}
               value="2"
-            />
-            <input
+            /></span>
+          <span>High<input
               type="radio"
               name="priority"
               onChange={addPriority}
               checked={priority === "3"}
               value="3"
-            />
+            /></span>
           </div>
-          <button onClick={()=> addTodoHandler()}>Click</button>
+          <button onClick={()=> addTodoHandler()}>Add todo</button>
         </form>
       </div>
-    </>
   );
 }
 
