@@ -16,7 +16,7 @@ function List({ data }) {
   }
   return (
     <div className={styles.listWrapper}>
-      <div>List component</div>
+      <div className={styles.viewLine}></div>
       <ul>
         {data[0] === undefined ? (
           <div>List is empty</div>

@@ -1,3 +1,75 @@
+@import url("./global.css");
 .inputWrapper {
-    border: 1px solid red;
+    .inputForm {
+        display: grid;
+        grid-template-columns: 1fr 140px;
+        grid-template-rows: 1fr;
+        justify-items: center;
+        align-items: center;
+        .inputField {
+            grid-column: 1/2;
+            grid-row: 1/2;
+            width: 100%;
+            display: flex;
+            flex-flow: row nowrap;
+            .inputText {
+                width: 100%;
+                border: none;
+                font-size: 16px;
+            }
+            .priority {
+                color: #455963;
+                font-size: 10px;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                grid-template-rows: 1fr 1.5fr;
+                .priorityHeader {
+                    grid-column: 1/4;
+                    grid-row: 1/2;
+                    display: flex;
+                    flex-flow: row nowrap;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .inputRadio1 {
+                    grid-column: 1/2;
+                    grid-row: 2/3;
+                    text-align: center;
+                    input {
+                        width: 100%;
+                    }
+                }
+                .inputRadio2 {
+                    grid-column: 2/3;
+                    grid-row: 2/3;
+                    text-align: center;
+                    input {
+                        width: 100%;
+                    }
+                }
+                .inputRadio3 {
+                    grid-column: 3/4;
+                    grid-row: 2/3;
+                    text-align: center;
+                    input {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+        .inputBtnWrap {
+            grid-column: 2/3;
+            grid-row: 1/2;
+            background-color: bisque;
+            .inputBTN {
+                background-color: #4acea3;
+                color: white;
+                width: 100px;
+                height: 35px;
+                border: none;
+                border-radius: 3px;
+            }
+        }
+    }
+   
 }

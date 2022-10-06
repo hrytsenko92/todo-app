@@ -17,44 +17,65 @@ function Input() {
       priority: priority,
       date: Date.now(),
     };
-    if (todo.title.length > 2 && todo.title.length < 20) {dispatch(addTodo(todo))}
-    setText("")
+    if (todo.title.length > 2 && todo.title.length < 20) {
+      dispatch(addTodo(todo));
+    }
+    setText("");
   };
   const addPriority = (e) => {
     setPriority(e.target.value);
   };
 
   return (
-      <div className={styles.inputWrapper}>
-        <form onSubmit={(e) => e.preventDefault()}>
-          <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
-          <div>
-            <span>Priority: </span>
-            <span>Low<input
-              type="radio"
-              name="priority"
-              onChange={addPriority}
-              checked={priority === "1"}
-              value="1"
-            /></span>
-           <span>Med<input
-              type="radio"
-              name="priority"
-              onChange={addPriority}
-              checked={priority === "2"}
-              value="2"
-            /></span>
-          <span>High<input
-              type="radio"
-              name="priority"
-              onChange={addPriority}
-              checked={priority === "3"}
-              value="3"
-            /></span>
+    <div className={styles.inputWrapper}>
+      <form className={styles.inputForm} onSubmit={(e) => e.preventDefault()}>
+        <div className={styles.inputField}>
+          <input
+            className={styles.inputText}
+            type="text"
+            placeholder={"Add any description..."}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+          <div className={styles.priority}>
+            <div className={styles.priorityHeader}><span>Priority</span></div>
+            <div className={styles.inputRadio1}>
+              <input
+                type="radio"
+                name="priority"
+                onChange={addPriority}
+                checked={priority === "1"}
+                value="1"
+              />
+              Low 
+            </div>
+            <div className={styles.inputRadio2}> 
+              <input
+                type="radio"
+                name="priority"
+                onChange={addPriority}
+                checked={priority === "2"}
+                value="2"
+              />
+              Med
+            </div>
+            <div className={styles.inputRadio3}>
+              <input
+                type="radio"
+                name="priority"
+                onChange={addPriority}
+                checked={priority === "3"}
+                value="3"
+              />
+              High
+            </div>
           </div>
-          <button onClick={()=> addTodoHandler()}>Add todo</button>
-        </form>
-      </div>
+        </div>
+        <div className={styles.inputBtnWrap}>
+          <button className={styles.inputBTN} onClick={() => addTodoHandler()}>Add todo</button>
+        </div>
+      </form>
+    </div>
   );
 }
 

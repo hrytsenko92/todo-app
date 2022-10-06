@@ -72,19 +72,19 @@ function View() {
     setData(todos);
   }, [todos]);
   return (
-    <div className={styles.viewWrapper}>
-      <span>View component</span>
-      <div>
-        <div>
-          <div onClick={() => sortStatTodo()}>status</div>
-          <div>title</div>
-          <div onClick={() => sortPriority()}>priority</div>
-          <div onClick={() => sortDateTodo()}>date</div>
-          <div>delete</div>
-        </div>
+  <div>{todos[0] === undefined ? (<div className={styles.sorryText}>
+    <div className={styles.viewLine}></div>
+    <span>Sorry, your task list is empty.</span>
+    </div>) : <div className={styles.viewWrapper}>
+      <div className={styles.viewHeader}>
+        <div className={styles.gridStatus}  onClick={() => sortStatTodo()}>s</div>
+        <div className={styles.gridTitle} >t</div>
+        <div className={styles.gridPriority}  onClick={() => sortPriority()}>p</div>
+        <div className={styles.gridDate}  onClick={() => sortDateTodo()}>d</div>
+        <div className={styles.gridDelete} >d</div>
       </div>
-      <List data={data} />
-    </div>
+      <List className={styles.vievList} data={data} />
+  </div>}</div>
   );
 }
 
