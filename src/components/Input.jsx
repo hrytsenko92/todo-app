@@ -37,42 +37,64 @@ function Input() {
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
-          <div className={styles.priority}>
-            <div className={styles.priorityHeader}><span>Priority</span></div>
+        </div>
+        <div className={styles.priority}>
+            <div className={styles.priorityHeader}>
+              <span>Priority</span>
+            </div>
             <div className={styles.inputRadio1}>
               <input
+                id="check1"
                 type="radio"
                 name="priority"
                 onChange={addPriority}
                 checked={priority === "1"}
                 value="1"
               />
-              Low 
+              <label for="check1">
+                <div>
+                  <i class="fa fa-check"></i>
+                </div>
+                Low
+              </label>
             </div>
-            <div className={styles.inputRadio2}> 
-              <input
+            <div className={styles.inputRadio2}>
+            <input
+                id="check2"
                 type="radio"
                 name="priority"
                 onChange={addPriority}
                 checked={priority === "2"}
                 value="2"
               />
-              Med
+              <label for="check2">
+                <div>
+                  <i class="fa fa-check"></i>
+                </div>
+                Med
+              </label>
             </div>
             <div className={styles.inputRadio3}>
-              <input
+            <input
+                id="check3"
                 type="radio"
                 name="priority"
                 onChange={addPriority}
                 checked={priority === "3"}
                 value="3"
               />
-              High
+              <label for="check3">
+                <div>
+                  <i class="fa fa-check"></i>
+                </div>
+                High
+              </label>
             </div>
           </div>
-        </div>
         <div className={styles.inputBtnWrap}>
-          <button className={styles.inputBTN} onClick={() => addTodoHandler()}>Add todo</button>
+          <button className={styles.inputBTN} onClick={() => addTodoHandler()}>
+            Add todo
+          </button>
         </div>
       </form>
     </div>

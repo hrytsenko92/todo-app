@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { toggleDone, removeTodo, removeAllDone } from "../store/todoSlice";
 import styles from "../style/list.module.scss";
+import ok from '../style/ok.svg';
+import circle from '../style/circle.svg';
 
 function List({ data }) {
   const dispatch = useDispatch();
@@ -16,18 +18,14 @@ function List({ data }) {
   }
   return (
     <div className={styles.listWrapper}>
-      <div className={styles.viewLine}></div>
       <ul>
-        {data[0] === undefined ? (
-          <div>List is empty</div>
-        ) : (
-          data.map((item) => {
+        {data.map((item) => {
             return (
-              <li key={item.id}>
+              <li key={item.id} className={styles.listItem}>
                 {item.isDone === true ? (
-                  <div onClick={() => done(item.id)}>Ok</div>
+                  <div onClick={() => done(item.id)}><img src={ok} alt="ok" className={styles.ok} /></div>
                 ) : (
-                  <div onClick={() => done(item.id)}>Not Ok</div>
+                  <div onClick={() => done(item.id)}><img src={circle} alt="circle" className={styles.circle} /></div>
                 )}
                 <div>{item.title}</div>
                 {item.priority === "1" ? (
@@ -42,7 +40,7 @@ function List({ data }) {
               </li>
             );
           })
-        )}
+        }
       </ul>
       <div>
         {data[0] === undefined ? null : (
