@@ -7,9 +7,10 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-  margin-top: 15px;
+  margin: 20px 0;
   color: var(--base-color);
   .viewLine {
+    margin-bottom: 15px;
     width: 100%;
     height: 1px;
     opacity: 0.2;
@@ -20,8 +21,9 @@
   display: flex;
   flex-flow: column;
   justify-content: center;
-  margin-top: 15px;
+  margin: 20px 0 10px;
   .viewLine {
+    margin-bottom: 10px;
     width: 100%;
     height: 1px;
     opacity: 0.2;
@@ -29,8 +31,8 @@
   }
   .viewHeader {
     display: grid;
-    grid-template-columns: 35px 300px 50px 80px 35px;
-    grid-template-rows: 30px;
+    grid-template-columns: 40px 260px 80px 80px 40px;
+    grid-template-rows: 25px;
     justify-content: center;
     justify-items: center;
     .sortedLD, .sortedLU {

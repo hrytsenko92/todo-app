@@ -4,6 +4,9 @@ import { toggleDone, removeTodo, removeAllDone } from "../store/todoSlice";
 import styles from "../style/list.module.scss";
 import ok from '../style/ok.svg';
 import circle from '../style/circle.svg';
+import del from '../style/delete.svg';
+import delA from '../style/deleteAll.svg';
+import delANA from '../style/deleteAllNA.svg'
 
 function List({ data }) {
   const dispatch = useDispatch();
@@ -16,6 +19,7 @@ function List({ data }) {
   const deleteAllDone = () => {
     dispatch(removeAllDone())
   }
+  console.log(data)
   return (
     <div className={styles.listWrapper}>
       <ul>
@@ -27,27 +31,30 @@ function List({ data }) {
                 ) : (
                   <div onClick={() => done(item.id)}><img src={circle} alt="circle" className={styles.circle} /></div>
                 )}
-                <div>{item.title}</div>
+                <div className={styles.title}>{item.title}</div>
                 {item.priority === "1" ? (
-                  <div>Low</div>
+                  <div className={styles.priority}>Low</div>
                 ) : item.priority === "2" ? (
-                  <div>Med</div>
+                  <div className={styles.priority}>Med</div>
                 ) : (
-                  <div>High</div>
+                  <div className={styles.priority}>High</div>
                 )}
-                <div>{new Date(item.date).toLocaleDateString()}</div>
-                <button onClick={() => deleteItem(item.id)}>Delete</button>
+                <div className={styles.createDate}>{new Date(item.date).toLocaleDateString()}</div>
+                <button className={styles.deleteBtn} onClick={() => deleteItem(item.id)}><img className={styles.btnIMG} src={del} alt="delete"/></button>
               </li>
             );
           })
         }
       </ul>
-      <div>
+      <div className={styles.infoWrap}>
         {data[0] === undefined ? null : (
-          <div>
-            <div>Total: {data.length}</div>
-            <div>
-              <button onClick={() => deleteAllDone()}>Delete completed</button>
+          <div className={styles.infoBlock}>
+            <div className={styles.viewLine}></div>
+            <div className={styles.infoBlockWrap}>
+            <div className={styles.totalCount}>Total: {data.length}</div>
+            <div className={styles.deleteAllBlock}>
+              {data.some((item) => item.isDone === true ? <button className={styles.deleteAllBtnBtn} onClick={() => deleteAllDone()}><img className={styles.deleteAllImg} src={delA} alt="delete all"/></button>: <button className={styles.deleteAllBtnBtn}><img className={styles.deleteAllImg} src={delANA} alt="delete all"/></button> )}
+            </div>
             </div>
           </div>
         )}
