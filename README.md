@@ -15,5 +15,5 @@ $ npm start
 ## Quick review
 
 
-Uploading Запис екрана 2022-10-11 о 16.27.08.mov…
+https://user-images.githubusercontent.com/98227096/195112847-0e085196-f555-44eb-9d0b-2c6ac957fbb5.mov
 
