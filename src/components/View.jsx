@@ -10,7 +10,7 @@ function View() {
   const [data, setData] = useState([]);
   const [isSortedStat, setIsSortedStat] = useState(false);
   const [isSortedDate, setIsSortedDate] = useState(false);
-  const [isSortedPriority, setIsSortedPriority] = useState(false);
+  const [isSortedPriority, setIsSortedPriority] = useState(true);
 
   const sortPriority = () => {
     if (isSortedPriority === false) {
@@ -76,13 +76,13 @@ function View() {
   return (
   <div>{todos[0] === undefined ? (<div className={styles.sorryText}>
     <div className={styles.viewLine}></div>
-    <span>Sorry, your task list is empty.</span>
+    <span>Sorry, your task list is empty...</span>
     </div>) : <div className={styles.viewWrapper}>
       <div className={styles.viewLine}></div>
       <div className={styles.viewHeader}>
         <div className={styles.gridStatus}  onClick={() => sortStatTodo()}>{isSortedStat === false ? <img src={down} alt="down" className={styles.sortedLD}/>:<img src={up} alt="up" className={styles.sortedLU}/>}</div>
         <div className={styles.gridTitle} ></div>
-        <div className={styles.gridPriority}  onClick={() => sortPriority()}>{isSortedPriority === false ? <img src={down} alt="down" className={styles.sortedLD}/>:<img src={up} alt="up" className={styles.sortedLU}/>}</div>
+        <div className={styles.gridPriority}  onClick={() => sortPriority()}>{isSortedPriority === true ? <img src={down} alt="down" className={styles.sortedLD}/> : <img src={up} alt="up" className={styles.sortedLU}/>}</div>
         <div className={styles.gridDate}  onClick={() => sortDateTodo()}>{isSortedDate === false ? <img src={down} alt="down" className={styles.sortedLD}/>:<img src={up} alt="up" className={styles.sortedLU}/>}</div>
         <div className={styles.gridDelete} ></div>
       </div>

@@ -19,6 +19,7 @@ function Input() {
     };
     if (todo.title.length > 2 && todo.title.length < 20) {
       dispatch(addTodo(todo));
+      setPriority("1")
     }
     setText("");
   };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { useDispatch } from "react-redux";
 import { toggleDone, removeTodo, removeAllDone } from "../store/todoSlice";
 import styles from "../style/list.module.scss";
@@ -9,6 +9,8 @@ import delA from '../style/deleteAll.svg';
 import delANA from '../style/deleteAllNA.svg'
 
 function List({ data }) {
+  const [completed, setCompleted] = useState("")
+  const [delAllbtn, setDelAllBtn] = useState(false)
   const dispatch = useDispatch();
   const done = (isDone) => {
     dispatch(toggleDone(isDone));
@@ -20,6 +22,19 @@ function List({ data }) {
     dispatch(removeAllDone())
   }
   console.log(data)
+  useEffect(()=> {
+    const isCompleted = () => {
+      let count = 0;
+      let temp = data.map(item => item.isDone === true ? count++ : null)
+      setCompleted(count)
+    }
+    const isBtnActive = () => {
+      const temp = data.some((item) => item.isDone === true)
+      setDelAllBtn(temp)
+    }
+    isCompleted()
+    isBtnActive()
+  },[data])
   return (
     <div className={styles.listWrapper}>
       <ul>
@@ -33,11 +48,11 @@ function List({ data }) {
                 )}
                 <div className={styles.title}>{item.title}</div>
                 {item.priority === "1" ? (
-                  <div className={styles.priority}>Low</div>
+                  <div className={styles.priorityL}>Low</div>
                 ) : item.priority === "2" ? (
-                  <div className={styles.priority}>Med</div>
+                  <div className={styles.priorityM}>Med</div>
                 ) : (
-                  <div className={styles.priority}>High</div>
+                  <div className={styles.priorityH}>High</div>
                 )}
                 <div className={styles.createDate}>{new Date(item.date).toLocaleDateString()}</div>
                 <button className={styles.deleteBtn} onClick={() => deleteItem(item.id)}><img className={styles.btnIMG} src={del} alt="delete"/></button>
@@ -51,9 +66,9 @@ function List({ data }) {
           <div className={styles.infoBlock}>
             <div className={styles.viewLine}></div>
             <div className={styles.infoBlockWrap}>
-            <div className={styles.totalCount}>Total: {data.length}</div>
+            <div className={styles.totalCount}>{completed == data.length ? <div>All completed</div>: <div> Completed {completed} of {data.length}</div>}</div>
             <div className={styles.deleteAllBlock}>
-              {data.some((item) => item.isDone === true ? <button className={styles.deleteAllBtnBtn} onClick={() => deleteAllDone()}><img className={styles.deleteAllImg} src={delA} alt="delete all"/></button>: <button className={styles.deleteAllBtnBtn}><img className={styles.deleteAllImg} src={delANA} alt="delete all"/></button> )}
+              { delAllbtn === true ? <button className={styles.deleteAllBtnBtn} onClick={() => deleteAllDone()}><img className={styles.deleteAllImg} src={delA} alt="delete all"/></button>: <button className={styles.deleteAllBtnBtn}><img className={styles.deleteAllImg} src={delANA} alt="delete all"/></button> }
             </div>
             </div>
           </div>
@@ -64,3 +79,4 @@ function List({ data }) {
 }
 
 export default List;
+// 

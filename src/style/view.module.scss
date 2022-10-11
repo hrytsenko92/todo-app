@@ -1,6 +1,7 @@
 @import url("./global.css");
 :root {
   --base-color: #455963;
+  --soryText: #BDBDBD;
 }
 .sorryText {
   display: flex;
@@ -8,7 +9,7 @@
   justify-content: center;
   align-items: center;
   margin: 20px 0;
-  color: var(--base-color);
+  color: var(--soryText);
   .viewLine {
     margin-bottom: 15px;
     width: 100%;

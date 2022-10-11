@@ -1,3 +1,10 @@
+@import url("./global.css");
+:root {
+    --text-color: #455963;
+    --low-pr: #4acea3;
+    --med-pr: #E7B210;
+    --high-pr: #F72F10;
+}
 .listWrapper {
     font-size: 11px;
     .listItem {
@@ -18,13 +25,14 @@
             grid-row: 1/2;
             justify-self: start;
         }
-        .priority {
+        .priorityL, .priorityM, .priorityH {
             grid-column: 3/4;
             grid-row: 1/2;
         }
         .createDate {
             grid-column: 4/5;
             grid-row: 1/2;
+            color: var(--text-color);
         }
         .deleteBtn {
             grid-column: 5/6;
@@ -38,6 +46,15 @@
                 width: 17px;
                 height: 17px;
             }
+        }
+        .priorityL {
+            color: var(--low-pr);
+        }
+        .priorityM {
+            color: var(--med-pr);
+        }
+        .priorityH {
+            color: var(--high-pr);
         }
     }
     .listItem:hover {
